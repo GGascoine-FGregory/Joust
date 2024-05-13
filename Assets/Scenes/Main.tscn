@@ -1,0 +1,52 @@
+[gd_scene load_steps=7 format=3 uid="uid://b1fv3jysduy1h"]
+
+[ext_resource type="PackedScene" uid="uid://ehcmg41oh4vc" path="res://Assets/Scenes/Platform.tscn" id="1_loenn"]
+[ext_resource type="Script" path="res://Assets/Scripts/Main.cs" id="1_tbasc"]
+[ext_resource type="PackedScene" uid="uid://dphgtmsd3lg6d" path="res://Assets/Scenes/SmallPlatform.tscn" id="2_etr7k"]
+[ext_resource type="PackedScene" uid="uid://cxokt28udq1xq" path="res://Assets/Scenes/Player.tscn" id="3_eiuuc"]
+[ext_resource type="PackedScene" uid="uid://bpo8764ebqfdr" path="res://Assets/Scenes/Enemy.tscn" id="4_7mn8k"]
+[ext_resource type="Texture2D" uid="uid://dx000scoxduud" path="res://Assets/Sprites/Background.png" id="5_pp7u2"]
+
+[node name="Main" type="Node2D"]
+script = ExtResource("1_tbasc")
+
+[node name="Background" type="Sprite2D" parent="."]
+texture = ExtResource("5_pp7u2")
+centered = false
+
+[node name="Platform" parent="." instance=ExtResource("1_loenn")]
+
+[node name="SmallPlatform" parent="." instance=ExtResource("2_etr7k")]
+position = Vector2(159, 145)
+
+[node name="SmallPlatform2" parent="." instance=ExtResource("2_etr7k")]
+position = Vector2(159, 62)
+
+[node name="SmallPlatform3" parent="." instance=ExtResource("2_etr7k")]
+position = Vector2(260, 107)
+
+[node name="SmallPlatform4" parent="." instance=ExtResource("2_etr7k")]
+position = Vector2(60, 106)
+
+[node name="Player" parent="." instance=ExtResource("3_eiuuc")]
+position = Vector2(159, 38)
+
+[node name="Enemy" parent="." instance=ExtResource("4_7mn8k")]
+position = Vector2(60, 88)
+
+[node name="Enemy2" parent="." instance=ExtResource("4_7mn8k")]
+position = Vector2(82, 191)
+
+[node name="Enemy3" parent="." instance=ExtResource("4_7mn8k")]
+position = Vector2(234, 192)
+
+[node name="Score" type="RichTextLabel" parent="."]
+offset_left = 89.0
+offset_top = 203.0
+offset_right = 149.0
+offset_bottom = 218.0
+text = "0"
+
+[node name="Lives" type="Sprite2D" parent="."]
+
+[node name="SpawnTimer" type="Timer" parent="."]

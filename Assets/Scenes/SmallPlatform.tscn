@@ -1,0 +1,18 @@
+[gd_scene load_steps=3 format=3 uid="uid://dphgtmsd3lg6d"]
+
+[ext_resource type="Texture2D" uid="uid://c55j1q5a25cb5" path="res://Assets/Sprites/short platform.png" id="1_dlkit"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_rvrjm"]
+size = Vector2(74, 15)
+
+[node name="SmallPlatform" type="StaticBody2D"]
+position = Vector2(155, 145)
+collision_layer = 3
+collision_mask = 3
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("1_dlkit")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, -2.5)
+shape = SubResource("RectangleShape2D_rvrjm")

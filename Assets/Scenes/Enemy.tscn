@@ -1,0 +1,69 @@
+[gd_scene load_steps=10 format=3 uid="uid://bpo8764ebqfdr"]
+
+[ext_resource type="Script" path="res://Assets/Scripts/Enemy.cs" id="1_67kxy"]
+[ext_resource type="Texture2D" uid="uid://dwuidojh3teql" path="res://Assets/Sprites/EnemySprite.png" id="2_751x2"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_1u17s"]
+atlas = ExtResource("2_751x2")
+region = Rect2(0, 0, 19, 23)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_8c0oy"]
+atlas = ExtResource("2_751x2")
+region = Rect2(19, 0, 19, 23)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_7jeqa"]
+atlas = ExtResource("2_751x2")
+region = Rect2(38, 0, 19, 23)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_fdgbe"]
+atlas = ExtResource("2_751x2")
+region = Rect2(57, 0, 19, 23)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_o7g4f"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_1u17s")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_8c0oy")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_7jeqa")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_fdgbe")
+}],
+"loop": true,
+"name": &"Walk",
+"speed": 20.0
+}]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_mbcdi"]
+radius = 6.0
+height = 18.0
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_2j6bi"]
+size = Vector2(10, 3)
+
+[node name="Enemy" type="CharacterBody2D"]
+collision_layer = 2
+collision_mask = 2
+script = ExtResource("1_67kxy")
+
+[node name="EnemySprite" type="AnimatedSprite2D" parent="."]
+position = Vector2(-1.3411e-07, 0)
+sprite_frames = SubResource("SpriteFrames_o7g4f")
+animation = &"Walk"
+
+[node name="EnemyCollision" type="CollisionShape2D" parent="."]
+position = Vector2(-1, -4)
+shape = SubResource("CapsuleShape2D_mbcdi")
+
+[node name="EnemyWeapon" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="EnemyWeapon"]
+position = Vector2(5, -0.5)
+shape = SubResource("RectangleShape2D_2j6bi")
+
+[connection signal="body_entered" from="EnemyWeapon" to="." method="ReportCollision"]
